@@ -1,5 +1,7 @@
 class TodoItemsController < ApplicationController
-  before_action :set_todo_list, :set_todo_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo_list, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_todo_item, only: [ :show, :edit, :update, :destroy]
+
 
   # GET /todo_items
   # GET /todo_items.json
@@ -70,7 +72,7 @@ class TodoItemsController < ApplicationController
     end
 
     def set_todo_list
-      @todo_list = TodoList.find(:todo_list_id)
+      @todo_list = TodoList.find(params[:todo_list_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
